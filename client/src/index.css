@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+  }
+
+body{
+    background: radial-gradient(1200px 800px at 10% -10%, rgba(13,148,136,0.08), transparent 60%),
+                radial-gradient(1000px 600px at 110% 10%, rgba(59,130,246,0.08), transparent 60%),
+                #0b1220;
+    color: #e5e7eb;
+}
+
+/* subtle glassmorphism card style */
+.card{
+    @apply bg-white/5 backdrop-blur border border-white/10 rounded-2xl shadow-xl;
+}
+
+/* accent text utilities override */
+.text-accent{ color: #14b8a6; }
+
+.max-width {
+    width: min(450ch, 100% - 4rem);
+    margin-inline: auto;
+  }
