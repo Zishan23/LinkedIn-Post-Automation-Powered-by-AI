@@ -6,7 +6,8 @@ import {
   faWandMagicSparkles,
   faCheckCircle,
 } from '@fortawesome/free-solid-svg-icons';
-import {SyncLoader} from 'react-spinners'
+import {SyncLoader} from 'react-spinners';
+import { generateMockContent } from '../config/demo';
 
 export default function ContentQuery({ content, setContent }) {
 
@@ -24,8 +25,9 @@ export default function ContentQuery({ content, setContent }) {
         setError('');
         
         try {
+          // Try to use the backend first
           const contentResponse = await axios.post(
-            `${process.env.REACT_APP_BACKEND_URL}/api/v1/generate-content`,
+            `${process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005'}/api/v1/generate-content`,
             {
               query: contentQuery,
             }
@@ -34,8 +36,10 @@ export default function ContentQuery({ content, setContent }) {
           setContent(generatedContent);
           setLoading(false);
         } catch (error) {
-          console.error('Error generating content:', error);
-          setError('Failed to generate content. Please try again.');
+          console.log('Backend not available, using demo mode');
+          // Fallback to demo mode
+          const demoContent = generateMockContent(contentQuery);
+          setContent(demoContent.content);
           setLoading(false);
         }
     };

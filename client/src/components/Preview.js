@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { SyncLoader } from 'react-spinners';
+import { mockLinkedInPost } from '../config/demo';
 
 export default function Preview({ content, image, selectedDays }) {
     const [showPreview, setShowPreview] = useState(false);
@@ -23,10 +24,9 @@ export default function Preview({ content, image, selectedDays }) {
         setPostStatus('Posting to LinkedIn...');
 
         try {
-            // For now, we'll just simulate the posting since LinkedIn API needs valid tokens
-            // In a real scenario, you'd send the content and image to your backend
+            // Try to use the backend first
             const response = await axios.post(
-                `${process.env.REACT_APP_BACKEND_URL}/api/v1/post-linkedin`,
+                `${process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005'}/api/v1/post-linkedin`,
                 {
                     generated_content: content,
                     image_path: 'generated_image.png' // This would be the actual image path
@@ -39,8 +39,10 @@ export default function Preview({ content, image, selectedDays }) {
                 setPostStatus(`Failed to post to LinkedIn: ${response.data.error || 'Unknown error'}`);
             }
         } catch (error) {
-            console.error('Error posting to LinkedIn:', error);
-            setPostStatus('Error posting to LinkedIn. Please check your API credentials.');
+            console.log('Backend not available, using demo mode');
+            // Fallback to demo mode
+            const demoPost = mockLinkedInPost(content, image);
+            setPostStatus(`Demo: ${demoPost.message} 🎭`);
         } finally {
             setPosting(false);
         }

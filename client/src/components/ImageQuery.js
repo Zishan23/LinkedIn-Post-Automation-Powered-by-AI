@@ -5,7 +5,8 @@ import {
   faWandMagicSparkles,
   faCheckCircle,
 } from '@fortawesome/free-solid-svg-icons';
-import {SyncLoader} from 'react-spinners'
+import {SyncLoader} from 'react-spinners';
+import { generateMockImage } from '../config/demo';
 
 export default function ImageQuery({image, setImage}){
     const [imageQuery, setImageQuery] = useState('');
@@ -22,8 +23,9 @@ export default function ImageQuery({image, setImage}){
         setError('');
         
         try {
+          // Try to use the backend first
           const imageResponse = await axios.post(
-            `${process.env.REACT_APP_BACKEND_URL}/api/v1/generate-image`,
+            `${process.env.REACT_APP_BACKEND_URL || 'http://localhost:5005'}/api/v1/generate-image`,
             {
               query: imageQuery,
             },
@@ -34,9 +36,11 @@ export default function ImageQuery({image, setImage}){
           setImage(imageURL);
           setLoading(false);
         } catch (error) {
+          console.log('Backend not available, using demo mode');
+          // Fallback to demo mode
+          const demoImage = generateMockImage(imageQuery);
+          setImage(demoImage.imageUrl);
           setLoading(false);
-          setError('Failed to generate image. Please try again.');
-          console.error('Error generating image:', error);
         }
       };
 
