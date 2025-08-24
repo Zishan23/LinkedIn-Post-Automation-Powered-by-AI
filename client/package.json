@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://zishan23.github.io/LinkedIn-Post-Automation-Powered-by-AI",
+  "homepage": "https://zishan23.github.io/LinkedIn-Post-Automation-Powered-by-AI/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-brands-svg-icons": "^7.0.0",
