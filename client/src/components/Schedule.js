@@ -9,7 +9,7 @@ import { useState } from "react";
 
 
 export default function Schedule({ content, selectedDays, setSelectedDays }) {
-  const [status, setStatus] = useState('');
+  const [, setStatus] = useState('');
 
   const handlePostToLinkedIn = async () => {
     try {

@@ -66,9 +66,9 @@ What story do you want to share today?
   const promptLower = prompt.toLowerCase();
   let bestMatch = 'default';
   
-  for (const [key, content] of Object.entries(mockPosts)) {
-    if (promptLower.includes(key)) {
-      bestMatch = key;
+  for (const topicKey of Object.keys(mockPosts)) {
+    if (promptLower.includes(topicKey)) {
+      bestMatch = topicKey;
       break;
     }
   }
@@ -92,9 +92,9 @@ export const generateMockImage = (prompt) => {
   const promptLower = prompt.toLowerCase();
   let bestMatch = 'default';
   
-  for (const [key, imageUrl] of Object.entries(mockImages)) {
-    if (promptLower.includes(key)) {
-      bestMatch = key;
+  for (const topicKey of Object.keys(mockImages)) {
+    if (promptLower.includes(topicKey)) {
+      bestMatch = topicKey;
       break;
     }
   }
