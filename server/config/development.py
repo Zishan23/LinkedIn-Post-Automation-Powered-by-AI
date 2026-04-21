@@ -15,10 +15,6 @@ HUGGINGFACE_API_KEY = os.getenv('HUGGINGFACE_API_KEY')
 EMAIL = os.getenv('EMAIL')
 PASSWORD = os.getenv('PASSWORD')
 
-# LinkedIn Application Credentials
-LINKEDIN_CLIENT_ID = "86ezq5ouuhyg4r"
-LINKEDIN_CLIENT_SECRET = "WPL_AP1.wQzH7qNav8MRvd55.0yA2tQ=="
-
 # API URLs
 HUGGINGFACE_API_URL = "https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-dev"
 LINKEDIN_API_URL = "https://api.linkedin.com/v2"
