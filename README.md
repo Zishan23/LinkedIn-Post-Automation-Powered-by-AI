@@ -23,6 +23,8 @@
 
 **[Open the live app →](https://zishan23.github.io/LinkedIn-Post-Automation-Powered-by-AI/)** · Works as a **static UI demo** (mock AI & posting). Run the stack locally for real GROQ, FLUX, and LinkedIn.
 
+*Routing uses the URL hash (`#/…`) so the app works on GitHub Pages without broken redirects.*
+
 </div>
 
 ---
@@ -118,7 +120,7 @@ flowchart LR
 
 | Environment | URL | Notes |
 |-------------|-----|--------|
-| **GitHub Pages** | [zishan23.github.io/LinkedIn-Post-Automation-Powered-by-AI](https://zishan23.github.io/LinkedIn-Post-Automation-Powered-by-AI/) | Static UI; mock generation when API is unavailable. |
+| **GitHub Pages** | [zishan23.github.io/LinkedIn-Post-Automation-Powered-by-AI/](https://zishan23.github.io/LinkedIn-Post-Automation-Powered-by-AI/) | Static UI; mock generation when API is unavailable. In-app navigation uses `#/` (e.g. `…/#/postanalysis`). |
 | **Full stack** | Run locally (below) | Real GROQ, Hugging Face FLUX, and LinkedIn posting. |
 
 CI deploys the `client` build to GitHub Pages on push to **`master`** or **`main`**. Manual deploy: see [DEPLOYMENT.md](./DEPLOYMENT.md).
